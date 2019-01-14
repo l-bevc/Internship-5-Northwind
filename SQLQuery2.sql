@@ -60,9 +60,11 @@ VALUES
 
 SELECT * FROM Zaposlenici
 
+--Zaposlenici s imenima a-g
 SELECT * FROM Zaposlenici
 WHERE Ime LIKE '[A-G]%'
 
+--Dodavanje opisa u Transakcije
 ALTER TABLE Transakcije
 ADD Opis nvarchar(100)
 
@@ -77,7 +79,7 @@ SET
 	Opis='Opis druge transakcije'
 WHERE
 	ID=2
-
+--Dodavanje bilješki u Zaposlenici
 ALTER TABLE Zaposlenici
 ADD BilješkeZaZaposlenike nvarchar(100)
 
@@ -91,23 +93,23 @@ ALTER TABLE Korisnici
 ADD CONSTRAINT UX_Constraint UNIQUE(OIB)
 
 --DRUGI ZADATAK, BAZA NORTHWIND
-
+--1.
 SELECT TOP 50 CompanyName, ContactName, ContactTitle, Address, City, Phone  FROM Customers
-
+--2.
 SELECT COUNT(CustomerID) CountCustomers FROM Customers
 WHERE Fax IS NOT NULL AND Region IS NOT NULL
-
+--3.
 SELECT TOP 2 FirstName, LastName, Title FROM Employees
 ORDER BY BirthDate 
-
+--4.
 SELECT * FROM Customers
 WHERE Address LIKE '[0-9]%' AND CompanyName LIKE '__a%'
 ORDER BY Country
-
+--5.
 SELECT TOP 1 COUNT(ProductID) CountOrders, QuantityPerUnit FROM Products
 GROUP BY QuantityPerUnit
 ORDER BY CountOrders DESC
-
+--6.
 SELECT CustomerID FROM Customers
 WHERE CustomerID NOT IN (SELECT DISTINCT(CustomerID) FROM Orders)
 
